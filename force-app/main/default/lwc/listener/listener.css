@@ -1,0 +1,15 @@
+.padding-apply {
+  padding: 2px;
+}
+.fontsize-large {
+  font-size: large;
+}
+.fontsize-medium {
+  font-size: medium;
+}
+.fontweight {
+  font-weight: 500;
+}
+.slds-card__header {
+  padding: 0px;
+}

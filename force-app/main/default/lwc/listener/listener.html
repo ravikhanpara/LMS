@@ -1,0 +1,93 @@
+<template>
+  <!-- <lightning-card title="Listener" icon-name="utility:listen"> -->
+  <div style="margin: 5px;">
+    <lightning-card>
+      <div class="slds-m-around_medium">
+        <template if:true={showDetail}>
+          <h3 class="slds-section__title padding-apply">
+            <button data-blockid="RecordDetail" aria-controls="Record Detail" aria-expanded="true"
+              class="slds-button slds-section__title-action" style="background:#ecebea" onclick={toggleBlock}>
+              <lightning-icon data-blockid="RecordDetail" class="RecordDetail" icon-name="utility:switch" size="x-small"
+                alternative-text="Toggle Block">
+              </lightning-icon>
+              <span data-blockid="RecordDetail" class="slds-truncate block-title-margin" title="Record Detail">Record
+                Detail</span>
+            </button>
+          </h3>
+          <div class=" FieldRecordDetail padding-apply">
+            <p class="padding-apply">
+              <label class="fontsize-large fontweight">Object Name: </label>
+              <a onclick={viewObjectDetail} class="fontsize-medium"><span class="slds-truncate">{objectLabel}</span></a>
+            </p>
+            <p class="padding-apply">
+              <label class="fontsize-large fontweight">Record Name: </label>
+              <a onclick={viewRecordDetail} class="fontsize-medium"><span class="slds-truncate">{record.Name}</span></a>
+            </p>
+            <p class="padding-apply">
+              <label class="fontweight fontsize-large">Message Channel Id: </label>
+              <lightning-formatted-text title={MessageChannelId} value={MessageChannelId}
+                class="slds-truncate fontsize-medium">
+              </lightning-formatted-text>
+            </p>
+            <p class="padding-apply">
+              <label class="fontsize-large fontweight">Message: </label>
+              <lightning-textarea name="input5" value={receivedMessage} variant="label-hidden" disabled>
+              </lightning-textarea>
+            </p>
+          </div>
+          <h3 if:true={showAdditionalDetail} class="slds-section__title padding-apply">
+            <button data-blockid="RecordInformation" aria-controls="record Information" aria-expanded="true"
+              class="slds-button slds-section__title-action" style="background:#ecebea" onclick={toggleBlock}>
+              <lightning-icon data-blockid="RecordInformation" class="RecordInformation" icon-name="utility:switch"
+                size="x-small" alternative-text="Toggle Block">
+              </lightning-icon>
+              <span data-blockid="RecordInformation" class="slds-truncate block-title-margin"
+                title="Additional detail">Additional Detail</span>
+            </button>
+          </h3>
+          <div if:true={showAdditionalDetail} class=" FieldRecordInformation padding-apply">
+            <lightning-layout multiple-rows=true>
+              <lightning-layout-item size=6>
+                <p class="padding-apply">
+                  <label class="fontweight fontsize-medium">Account Number: </label>
+                  <lightning-formatted-text title={record.AccountNumber} value={record.AccountNumber}
+                    class="slds-truncate">
+                  </lightning-formatted-text>
+                </p>
+              </lightning-layout-item>
+              <lightning-layout-item size=6>
+                <p class="padding-apply">
+                  <label class="fontweight fontsize-medium">Annual Revenue: </label>
+                  <lightning-formatted-number format-style="currency" title={record.AnnualRevenue}
+                    value={record.AnnualRevenue} class="slds-truncate"></lightning-formatted-number>
+                </p>
+              </lightning-layout-item>
+
+              <lightning-layout-item size=6>
+                <p class="padding-apply">
+                  <label class="fontweight fontsize-medium">Phone: </label>
+                  <lightning-formatted-phone title={record.Phone} value={record.Phone} class="slds-truncate">
+                  </lightning-formatted-phone>
+                </p>
+              </lightning-layout-item>
+              <lightning-layout-item size=6>
+                <p class="padding-apply">
+                  <label class="fontweight fontsize-medium">Sic: </label>
+                  <lightning-formatted-text title={record.Sic} value={record.Sic} class="slds-truncate">
+                  </lightning-formatted-text>
+                </p>
+              </lightning-layout-item>
+            </lightning-layout>
+
+          </div>
+        </template>
+
+
+      </div>
+      <div if:false={showDetail}>
+        <h2 class="padding-apply">Please publish a record</h2>
+      </div>
+    </lightning-card>
+  </div>
+
+</template>
